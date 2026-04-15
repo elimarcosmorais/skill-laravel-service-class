@@ -377,7 +377,7 @@ it('processes a valid payment', function () {
 
 ## Documentação de Uso para AI (Obrigatório)
 
-Toda service class DEVE ter UM ÚNICO arquivo `.md` no mesmo diretório. O nome do
+Toda service class DEVE ter UM ÚNICO arquivo `.md` em `.claude/docs/services/`. O nome do
 arquivo é a conversão do nome da classe de PascalCase para kebab-case.
 
 **Regra de nomenclatura**: cada letra maiúscula (exceto a primeira) é precedida por
@@ -403,9 +403,11 @@ DENTRO do contexto da classe principal, como extensão da sua API.
 ### Localização
 
 ```
+.claude/docs/services/
+└── payment-service.md     ← arquivo único de instruções AI
+
 app/Services/Payment/
 ├── PaymentService.php
-├── payment-service.md     ← arquivo único de instruções AI
 ├── DTOs/
 │   └── PaymentResult.php
 ├── Support/

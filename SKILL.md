@@ -1,15 +1,13 @@
 ---
 name: laravel-service-class
 description: >
-  Padroniza criação, revisão e refatoração de classes de serviço (Services) em
-  Laravel 13.x com PHP 8.4. Cobre estrutura de diretórios, classes auxiliares
-  (Enums, Exceptions, DTOs, ValueObjects, Repositories, Support), registro no
-  AppServiceProvider (singleton vs scoped vs bind), e geração de testes com Pest.
-  Acionar sempre que o usuário mencionar "service", "serviço", "criar service",
-  "refatorar service", "testar service", "registrar service", "service provider",
-  "singleton vs scoped", "bind service", ou qualquer criação/modificação de classe
-  em app/Services/. Também acionar quando o usuário pedir para extrair lógica de
-  negócio de controllers para services.
+  ONLY activate this skill when the user explicitly requests it by name (e.g.
+  'use laravel-service-class', 'aplique laravel-service-class', 'skill
+  laravel-service-class'). Do NOT auto-trigger based on context inference. This
+  skill standardizes creation, review, and refactoring of Service classes in
+  Laravel 13.x with PHP 8.4. Covers directory structure, helper classes (Enums,
+  Exceptions, DTOs, ValueObjects, Repositories, Support), AppServiceProvider
+  registration (singleton vs scoped vs bind), and test generation with Pest.
 ---
 
 # Laravel Service Class

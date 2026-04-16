@@ -62,6 +62,7 @@ Tipos de classes auxiliares permitidos:
 3. Dependências injetadas via construtor com `readonly`
 4. Métodos públicos com tipagem completa (parâmetros e retorno)
 5. Nomes de métodos em inglês, camelCase, com verbo de ação
+6. Comentários de classes, métodos e blocos de código SEMPRE em português do Brasil
 
 ### Quando Usar `final readonly class`
 
@@ -216,7 +217,9 @@ enum PaymentStatus: string
 
 ### Exceptions
 
-Exceções específicas do domínio, estendendo `RuntimeException` ou `DomainException`:
+Exceções específicas do domínio, estendendo `RuntimeException` ou `DomainException`.
+
+**Regra obrigatória**: mensagens de exceção SEMPRE em português do Brasil.
 
 ```php
 <?php
@@ -232,14 +235,14 @@ final class PaymentFailedException extends RuntimeException
     public static function declined(string $transactionId, string $reason): self
     {
         return new self(
-            "Payment {$transactionId} declined: {$reason}"
+            "Pagamento {$transactionId} recusado: {$reason}"
         );
     }
 
     public static function gatewayUnavailable(string $gateway): self
     {
         return new self(
-            "Payment gateway '{$gateway}' is unavailable"
+            "Gateway de pagamento '{$gateway}' está indisponível"
         );
     }
 }
@@ -265,7 +268,7 @@ final readonly class Money
         public string $currency = 'BRL',
     ) {
         if ($amount < 0) {
-            throw new InvalidArgumentException('Amount cannot be negative');
+            throw new InvalidArgumentException('O valor não pode ser negativo');
         }
     }
 
@@ -285,7 +288,7 @@ final readonly class Money
     {
         if ($this->currency !== $other->currency) {
             throw new InvalidArgumentException(
-                "Cannot operate on different currencies: {$this->currency} vs {$other->currency}"
+                "Não é possível operar com moedas diferentes: {$this->currency} vs {$other->currency}"
             );
         }
     }
@@ -333,6 +336,10 @@ $this->app->singleton(
 ---
 
 ## Testabilidade
+
+> **Regra**: arquivos de teste NUNCA são gerados automaticamente. Somente criar
+> testes quando o usuário pedir explicitamente (ex.: "crie os testes", "gere o
+> arquivo de teste", "quero os testes com Pest"). Em caso de dúvida, não gerar.
 
 Services projetados para teste devem:
 
@@ -626,4 +633,4 @@ Verificar antes de entregar qualquer service:
 - [ ] Diretório do service criado em `app/Services/DomainName/`
 - [ ] Registro no AppServiceProvider justificado (ou auto-resolve documentado)
 - [ ] Arquivo `{service-name}.md` (kebab-case) com instruções AI criado no diretório do service
-- [ ] Testes com Pest quando solicitados
+- [ ] Testes com Pest SOMENTE se o usuário pediu explicitamente — NUNCA gerar por iniciativa própria

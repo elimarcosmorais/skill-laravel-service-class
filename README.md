@@ -1,4 +1,4 @@
-# laravel-service-class
+# laravel-service-class (v1.0.2)
 
 Skill para [Claude Code](https://docs.anthropic.com/en/docs/claude-code) que padroniza a criação, revisão e refatoração de classes de serviço (Services) em Laravel, seguindo padrões enterprise de organização, tipagem e testabilidade.
 
